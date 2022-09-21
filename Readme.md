@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Евгений Безбородов](https://up.htmlacademy.ru/univer-js1/1/user/2222697).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Нюкало](https://htmlacademy.ru/profile/nyukalopavel).
 
 ---
 
