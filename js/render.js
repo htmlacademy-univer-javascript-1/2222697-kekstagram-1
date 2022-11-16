@@ -1,5 +1,5 @@
 import {createPhotos} from './data.js';
-
+import {bigPictureRender} from './full-version.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
@@ -12,7 +12,8 @@ const renderPicture = (image) => {
   picture.querySelector('.picture__img').src = image.url;
   picture.querySelector('.picture__likes').textContent = image.likes;
   picture.querySelector('.picture__comments').textContent = image.comments.length;
-
+  bigPictureRender(picture, image);
+  
   return picture;
 };
 
