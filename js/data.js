@@ -1,4 +1,5 @@
-import {randomNumber, getRandomArrayElement} from "./util";
+import {getRandomNumber, getRandomArrayElement} from './util.js';
+
 const COMMENTS_COUNT = 5;
 const PHOTOS_COUNT = 25;
 
@@ -17,7 +18,7 @@ const MESSAGES = [
     'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
     'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
     'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-  ];
+];
 
 const DESCRIPTIONS = [
     "Шишкины иголки", 
@@ -25,25 +26,26 @@ const DESCRIPTIONS = [
     "Радужные мысли", 
     "Что бы на писать",
     "Ем суп"
-  ];
+];
 
 let idComment = 0;
 const createComment = () => ({
   id: idComment++,
-  avatar: `img/avatar${randomNumber(1, 6)}.svg`,
+  avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES)
 });
 
 let idPublication = 0;
 const createPublication = () => ({
-  id: idPublication++,
-  url: `photos/${this.id}.jpg`,
+  id: ++idPublication,
+  url: `photos/${idPublication}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
-  likes: randomNumber(15, 200),
-  comment: Array.from({length: COMMENTS_COUNT}, createComment)
+  likes: getRandomNumber(15, 200),
+  comments: Array.from({length: COMMENTS_COUNT}, createComment)
 });
 
-const createPhotography = () => Array.from({length: PHOTOS_COUNT}, createPublication);
+const createPhotos = () => Array.from({length: PHOTOS_COUNT}, createPublication);
 
-export {createPhotography};
+
+export {createPhotos};
