@@ -1,3 +1,4 @@
+
 import {photos} from './data.js';
 import {bigPictureRender} from './full-version.js';
 
@@ -13,10 +14,12 @@ const createUserThumbnail = (image) => {
 };
 
 const renderPicture = (image) => {
-  const picture = createUserThumbnail(image);
-  picture.addEventListener('click', () => {
-    bigPictureRender(image);
-  })
+  const picture = templateFragment.cloneNode(true);
+  picture.querySelector('.picture__img').src = image.url;
+  picture.querySelector('.picture__likes').textContent = image.likes;
+  picture.querySelector('.picture__comments').textContent = image.comments.length;
+  bigPictureRender(picture, image);
+  
   return picture;
 };
 
