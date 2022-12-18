@@ -20,8 +20,8 @@ const renderPicture = (image) => {
   return picture;
 };
 
-const renderPictures = () => {
-  photos.forEach((photo) => {
+const renderPictures = (array) => {
+  array.forEach((photo) => {
     picturesContainer.appendChild(renderPicture(photo));
   });
 };
