@@ -4,7 +4,6 @@ const COMMENT_LENGTH = 140;
 const HASHTAG_RULE = /^#[А-яа-яA-za-zёЁ]{1,19}$/;
 const form = document.querySelector('.img-upload__form');
 
-// eslint-disable-next-line no-undef
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
@@ -16,7 +15,7 @@ const checkHashtags = (value) => {
     return true;
   }
   const hashtags = value.split(' ').map((hashtag) => hashtag.toLowerCase());
-  return value === '' || hashtags.every((hashtag) => HASHTAG_RULE.test(hashtag));
+  return hashtags.every((hashtag) => HASHTAG_RULE.test(hashtag));
 };
 
 const checkUniqueHashtags = (value) => {
