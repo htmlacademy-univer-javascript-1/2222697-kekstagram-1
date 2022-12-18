@@ -1,8 +1,9 @@
-'use strict';
 import {isEscapeKey} from './util.js';
 import {isPristineValidate, onFocusPreventClose, addPristineValidators} from './validate-form.js';
 import {onScaleButtonClick} from "./user-scale.js";
 import {updateSliderSettings, createSlider, setDefaultSettings} from "./user-effects.js";
+import {sendData} from "./api.js";
+import {showMessage} from "./message.js";
 
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
@@ -13,7 +14,7 @@ const commentInput = document.querySelector('.text__description');
 const uploadEffects = document.querySelector('.img-upload__effects');
 
 const onEscapeKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && document.querySelector('.error') === null && document.querySelector('.success') === null) {
     closeFormOverlay();
   }
 };
@@ -45,8 +46,15 @@ const renderForm = () => {
   addPristineValidators(hashtagsInput, commentInput);
   uploadButton.addEventListener('change', openFormOverlay);
   form.addEventListener('submit', (evt) => {
-    if (!isPristineValidate()) {
-      evt.preventDefault();
+    evt.preventDefault();
+    if (isPristineValidate()) {
+      sendData(() => {
+          showMessage('success');
+          },
+          () => {
+          showMessage('error');
+          }
+          , new FormData(evt.target));
     }
   });
 };
