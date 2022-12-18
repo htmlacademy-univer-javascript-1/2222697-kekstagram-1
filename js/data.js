@@ -1,3 +1,4 @@
+'use strict'
 import {getRandomNumber, getRandomArrayElement} from './util.js';
 
 const PHOTOS_COUNT = 25;
