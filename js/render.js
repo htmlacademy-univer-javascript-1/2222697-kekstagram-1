@@ -1,4 +1,3 @@
-import {photos} from './data.js';
 import {bigPictureRender} from './full-version.js';
 
 const picturesContainer = document.querySelector('.pictures');
