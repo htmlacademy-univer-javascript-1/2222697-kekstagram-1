@@ -4,6 +4,7 @@ import {onScaleButtonClick} from "./user-scale.js";
 import {updateSliderSettings, createSlider, setDefaultSettings} from "./user-effects.js";
 import {sendData} from "./api.js";
 import {showMessage} from "./message.js";
+import {uploadImage} from "./prewiev.js";
 
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
@@ -43,6 +44,7 @@ const openFormOverlay = () => {
 const renderForm = () => {
   onScaleButtonClick();
   createSlider();
+  uploadImage();
   addPristineValidators(hashtagsInput, commentInput);
   uploadButton.addEventListener('change', openFormOverlay);
   form.addEventListener('submit', (evt) => {
